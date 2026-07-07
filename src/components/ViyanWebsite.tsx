@@ -54,6 +54,7 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
       {page === "about" && (
         <>
           <AboutSection t={t} />
+          <AboutServicesSection t={t} />
           <TransitSection t={t} />
         </>
       )}
@@ -77,7 +78,7 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
       {page === "blog" && <BlogSection t={t} />}
       {page === "contact" && <ContactSection t={t} />}
 
-      <Footer />
+      <Footer t={t} />
       <a className="floating-whatsapp" href={whatsappUrl} aria-label="WhatsApp">
         WhatsApp
       </a>
@@ -267,6 +268,33 @@ function AboutSection({ t }: { t: Record<string, string | string[] | string[][]>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutServicesSection({ t }: { t: Record<string, string | string[] | string[][]> }) {
+  const serviceNotes = t.aboutCards as string[];
+  const serviceDetails = (t.services as string[]).map((service, index) => ({
+    title: service,
+    text: serviceNotes[index % serviceNotes.length]
+  }));
+
+  return (
+    <section className="section about-services-section">
+      <div className="section-heading">
+        <span className="section-kicker">CAPABILITY</span>
+        <h2>{t.servicesTitle as string}</h2>
+        <p>{t.transitText as string}</p>
+      </div>
+      <div className="about-service-grid">
+        {serviceDetails.map((service, index) => (
+          <article className="about-service-card" key={service.title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -495,11 +523,24 @@ function ContactSection({ t }: { t: Record<string, string | string[] | string[][
   );
 }
 
-function Footer() {
+function Footer({ t }: { t: Record<string, string | string[] | string[][]> }) {
   return (
     <footer className="site-footer">
-      <Image src="/logo.png" alt="VİYAN" width={132} height={38} loading="lazy" />
-      <span>© 2026 VİYAN. Premium trade and logistics solutions.</span>
+      <div className="footer-brand">
+        <Image src="/logo.png" alt="VİYAN" width={132} height={38} loading="lazy" />
+        <p>© 2026 VİYAN. Premium trade and logistics solutions.</p>
+      </div>
+      <div className="footer-links">
+        {routes.map((route, index) => (
+          <Link key={route.key} href={route.href}>
+            {(t.nav as string[])[index]}
+          </Link>
+        ))}
+      </div>
+      <div className="footer-contact">
+        <a href={`tel:+90${phone.replace(/\D/g, "").slice(1)}`}>{phone}</a>
+        <a href={whatsappUrl}>WhatsApp</a>
+      </div>
     </footer>
   );
 }

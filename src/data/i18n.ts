@@ -55,9 +55,10 @@ export const dictionary = {
     ],
     blogTitle: "Blog ve piyasa notları",
     blog: [
-      ["Transit Ticarette İran ve Irak Pazarı", "İran ve Irak pazarında araç satışı, belge takibi ve lojistik planlamanın ticari başarıya etkisi."],
+      ["İran ve Irak Transit Ticaretinde Araç Satışı", "İran ve Irak pazarında araç satışı, belge takibi ve lojistik planlamanın ticari başarıya etkisi."],
       ["Tır Alım Satımında Dikkat Edilmesi Gerekenler", "Tır alım-satımında geçmiş kayıtları, kondisyon, rota uygunluğu ve operasyon maliyetleri nasıl değerlendirilir?"],
-      ["Lojistikte Güvenilir Partner Seçimi", "Sınır ötesi ticarette doğru lojistik partneri seçmek operasyon güvenini ve teslimat kalitesini artırır."]
+      ["Premium Araç Ticaretinde Güven ve Ekspertiz", "Lüks araç ticaretinde ekspertiz, araç geçmişi, şeffaf iletişim ve güvenilir teslimat süreci neden kritiktir?"],
+      ["Lojistikte Doğru Partner Seçimi", "Sınır ötesi ticarette doğru lojistik partneri seçmek operasyon güvenini ve teslimat kalitesini artırır."]
     ],
     contactTitle: "İletişim",
     form: ["Ad Soyad", "Telefon", "E-posta", "İlgilendiğiniz Hizmet", "Mesaj", "Gönder"],
@@ -104,9 +105,10 @@ export const dictionary = {
     why: ["20 years of sector experience", "Iran and Iraq market insight", "Reliable vehicle sourcing", "Professional logistics network", "Transparent communication", "Corporate service mindset"],
     blogTitle: "Blog and market notes",
     blog: [
-      ["Iran and Iraq Markets in Transit Trade", "How vehicle sales, document follow-up and logistics planning shape trade performance in Iran and Iraq."],
+      ["Vehicle Sales in Iran and Iraq Transit Trade", "How vehicle sales, document follow-up and logistics planning shape trade performance in Iran and Iraq."],
       ["What to Check When Buying or Selling Trucks", "How to evaluate vehicle history, condition, route suitability and operating costs in truck trade."],
-      ["Choosing a Reliable Logistics Partner", "The right logistics partner improves operational trust, delivery quality and cross-border communication."]
+      ["Trust and Inspection in Premium Vehicle Trade", "Why inspection, vehicle history, transparent communication and reliable delivery are critical in luxury vehicle trade."],
+      ["Choosing the Right Logistics Partner", "The right logistics partner improves operational trust, delivery quality and cross-border communication."]
     ],
     contactTitle: "Contact",
     form: ["Full Name", "Phone", "Email", "Service of Interest", "Message", "Send"],
@@ -144,9 +146,10 @@ export const dictionary = {
     why: ["20 عاما من الخبرة", "معرفة بأسواق إيران والعراق", "توريد موثوق للمركبات", "شبكة لوجستية احترافية", "تواصل شفاف", "فهم مؤسسي للخدمة"],
     blogTitle: "المدونة وملاحظات السوق",
     blog: [
-      ["اختيار المركبة المناسبة لتجارة الترانزيت", "نقاط مهمة عند توريد الشاحنات والسيارات الفاخرة لأسواق إيران والعراق."],
-      ["الانضباط التشغيلي في البيع عبر الحدود", "أهمية إدارة المستندات والمسار والتسليم والتواصل من مركز واحد."],
-      ["الثقة في تجارة المركبات الفاخرة", "كيف تعزز سجلات المركبة والفحص والخدمات اللوجستية والتواصل بعد البيع الثقة."]
+      ["بيع المركبات في تجارة الترانزيت إلى إيران والعراق", "أثر بيع المركبات ومتابعة المستندات والتخطيط اللوجستي على نجاح التجارة في إيران والعراق."],
+      ["ما يجب الانتباه إليه في بيع وشراء الشاحنات", "كيفية تقييم تاريخ المركبة والحالة الفنية وملاءمة المسار وتكاليف التشغيل في تجارة الشاحنات."],
+      ["الثقة والفحص في تجارة المركبات الفاخرة", "أهمية الفحص وتاريخ المركبة والتواصل الشفاف والتسليم الموثوق في تجارة السيارات الفاخرة."],
+      ["اختيار الشريك اللوجستي الصحيح", "الشريك اللوجستي الصحيح يعزز الثقة التشغيلية وجودة التسليم والتواصل عبر الحدود."]
     ],
     contactTitle: "تواصل",
     form: ["الاسم الكامل", "الهاتف", "البريد الإلكتروني", "الخدمة المطلوبة", "الرسالة", "إرسال"],
