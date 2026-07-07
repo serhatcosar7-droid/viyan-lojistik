@@ -14,7 +14,7 @@ export const dictionary = {
       "VİYAN, 20 yıllık tecrübesiyle tır ve lüks araç alım-satımı, İran ve Irak’a transit ticaret, lojistik organizasyon ve sınır ötesi ticaret çözümleri sunar.",
     inspect: "Araçları İncele",
     contact: "İletişime Geç",
-    stats: ["20 Yıllık Deneyim", "İran & Irak Ağı", "Premium Araç Tedariki"],
+    stats: ["20+ Yıllık Deneyim", "İran & Irak Aktif Ticaret Ağı", "Premium Araç Tedariki", "Uluslararası Lojistik Çözümleri"],
     aboutTitle: "Taşımacılıktan bölgesel ticaret gücüne",
     aboutText:
       "Aydın Altıntaş kuruculuğunda yük taşımacılığı tecrübesiyle başlayan VİYAN, bugün tır alım-satımı, lüks araç ticareti, transit operasyon yönetimi ve lojistik danışmanlık alanlarında güçlü bir marka konumundadır.",
@@ -61,6 +61,9 @@ export const dictionary = {
       ["Lojistikte Doğru Partner Seçimi", "Sınır ötesi ticarette doğru lojistik partneri seçmek operasyon güvenini ve teslimat kalitesini artırır."]
     ],
     contactTitle: "İletişim",
+    footerMenu: "Menü",
+    footerServices: "Hizmetler",
+    footerContact: "İletişim",
     form: ["Ad Soyad", "Telefon", "E-posta", "İlgilendiğiniz Hizmet", "Mesaj", "Gönder"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Kat:4 No:8, 33000 Mezitli/Mersin"
   },
@@ -71,7 +74,7 @@ export const dictionary = {
       "VİYAN delivers truck and luxury vehicle trading, transit commerce to Iran and Iraq, logistics organization and cross-border trade solutions with 20 years of experience.",
     inspect: "View Vehicles",
     contact: "Contact Us",
-    stats: ["20 Years Experience", "Iran & Iraq Network", "Premium Sourcing"],
+    stats: ["20+ Years Experience", "Active Iran & Iraq Trade Network", "Premium Vehicle Sourcing", "International Logistics Solutions"],
     aboutTitle: "From freight experience to regional trade strength",
     aboutText:
       "Founded by Aydın Altıntaş with a background in freight transportation, VİYAN is now a strong brand in truck trading, luxury vehicle commerce, transit operations and logistics consulting.",
@@ -111,6 +114,9 @@ export const dictionary = {
       ["Choosing the Right Logistics Partner", "The right logistics partner improves operational trust, delivery quality and cross-border communication."]
     ],
     contactTitle: "Contact",
+    footerMenu: "Menu",
+    footerServices: "Services",
+    footerContact: "Contact",
     form: ["Full Name", "Phone", "Email", "Service of Interest", "Message", "Send"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Floor:4 No:8, 33000 Mezitli/Mersin"
   },
@@ -121,7 +127,7 @@ export const dictionary = {
       "تقدم VİYAN بخبرة 20 عاما حلول بيع وشراء الشاحنات والسيارات الفاخرة، والتجارة الترانزيت إلى إيران والعراق، وتنظيم الخدمات اللوجستية والتجارة عبر الحدود.",
     inspect: "استعرض المركبات",
     contact: "تواصل معنا",
-    stats: ["20 عاما من الخبرة", "شبكة إيران والعراق", "توريد مركبات فاخرة"],
+    stats: ["أكثر من 20 عاما من الخبرة", "شبكة تجارة نشطة في إيران والعراق", "توريد مركبات فاخرة", "حلول لوجستية دولية"],
     aboutTitle: "من خبرة النقل إلى قوة تجارية إقليمية",
     aboutText:
       "بدأت VİYAN بقيادة المؤسس أيدن ألتنطاش من خبرة نقل البضائع، وأصبحت اليوم علامة قوية في تجارة الشاحنات والسيارات الفاخرة وإدارة عمليات الترانزيت والاستشارات اللوجستية.",
@@ -152,6 +158,9 @@ export const dictionary = {
       ["اختيار الشريك اللوجستي الصحيح", "الشريك اللوجستي الصحيح يعزز الثقة التشغيلية وجودة التسليم والتواصل عبر الحدود."]
     ],
     contactTitle: "تواصل",
+    footerMenu: "القائمة",
+    footerServices: "الخدمات",
+    footerContact: "تواصل",
     form: ["الاسم الكامل", "الهاتف", "البريد الإلكتروني", "الخدمة المطلوبة", "الرسالة", "إرسال"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Kat:4 No:8, 33000 Mezitli/Mersin"
   }

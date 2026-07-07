@@ -97,8 +97,10 @@ function Header({
   setLocale: (locale: Locale) => void;
   nav: string[];
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="site-header">
+    <header className={menuOpen ? "site-header menu-open" : "site-header"}>
       <Link className="brand" href="/" aria-label="VİYAN">
         <span className="brand-mark">
           <Image src="/logo.png" alt="VİYAN logo" width={172} height={48} priority />
@@ -106,11 +108,16 @@ function Header({
       </Link>
       <nav className="nav-links" aria-label="Primary navigation">
         {routes.map((route, index) => (
-          <Link key={route.key} className={page === route.key ? "active" : ""} href={route.href}>
+          <Link key={route.key} className={page === route.key ? "active" : ""} href={route.href} onClick={() => setMenuOpen(false)}>
             {nav[index]}
           </Link>
         ))}
       </nav>
+      <button className="menu-toggle" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label="Toggle menu">
+        <span />
+        <span />
+        <span />
+      </button>
       <div className="language-switcher" aria-label="Language selector">
         {locales.map((item) => (
           <button
@@ -134,15 +141,18 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
       <section className="hero-section">
         <div className="hero-content reveal">
           <div className="eyebrow">VİYAN GLOBAL TRADE & LOGISTICS</div>
+          <div className="mobile-hero-title">Tır, Lüks Araç ve Transit Ticarette Güven</div>
           <h1>{t.heroTitle as string}</h1>
           <p>{t.heroText as string}</p>
           <div className="hero-actions">
             <Link className="button primary" href="/showroom">
+              <span className="button-icon">→</span>
               {t.inspect as string}
             </Link>
-            <Link className="button ghost" href="/iletisim">
-              {t.contact as string}
-            </Link>
+            <a className="button ghost" href={whatsappUrl}>
+              <span className="button-icon">↗</span>
+              WhatsApp
+            </a>
           </div>
           <div className="hero-stats">
             {(t.stats as string[]).map((item) => (
@@ -162,6 +172,7 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
           <div className="hero-logo-watermark">VİYAN</div>
         </div>
       </section>
+      <TransitSection t={t} compact />
       <ServicesSection t={t} />
       <FeaturedVehicles t={t} />
       <WhySection t={t} />
@@ -235,6 +246,16 @@ function FeaturedVehicles({ t }: { t: Record<string, string | string[] | string[
                 </h3>
                 <p>{vehicle.description}</p>
               </div>
+              <dl>
+                <div>
+                  <dt>{t.year as string}</dt>
+                  <dd>{vehicle.year}</dd>
+                </div>
+                <div>
+                  <dt>KM</dt>
+                  <dd>{vehicle.mileage}</dd>
+                </div>
+              </dl>
               <div className="card-actions">
                 <Link href="/showroom" className="button compact dark">
                   {t.details as string}
@@ -421,7 +442,7 @@ function ServicesSection({ t }: { t: Record<string, string | string[] | string[]
       <div className="service-grid">
         {(t.services as string[]).map((service, index) => (
           <article className="service-item" key={service}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
+            <span>{["▰", "◆", "◎", "↗", "⟶", "◌", "◇", "✦"][index]}</span>
             <h3>{service}</h3>
           </article>
         ))}
@@ -430,9 +451,9 @@ function ServicesSection({ t }: { t: Record<string, string | string[] | string[]
   );
 }
 
-function TransitSection({ t }: { t: Record<string, string | string[] | string[][]> }) {
+function TransitSection({ t, compact = false }: { t: Record<string, string | string[] | string[][]>; compact?: boolean }) {
   return (
-    <section className="section transit-section">
+    <section className={compact ? "section transit-section transit-compact" : "section transit-section"}>
       <div className="transit-copy">
         <span className="section-kicker">IRAN · IRAQ</span>
         <h2>{t.transitTitle as string}</h2>
@@ -480,9 +501,13 @@ function BlogSection({ t }: { t: Record<string, string | string[] | string[][]> 
       <div className="blog-grid">
         {(t.blog as string[][]).map(([title, text]) => (
           <article className="blog-card" key={title}>
-            <span>VİYAN</span>
+            <div className="blog-thumb">
+              <Image src="/vehicles/vehicle-3.jpg" alt={title} width={520} height={320} loading="lazy" />
+            </div>
+            <span>VİYAN INSIGHT</span>
             <h3>{title}</h3>
             <p>{text}</p>
+            <Link href="/iletisim">{t.details as string}</Link>
           </article>
         ))}
       </div>
@@ -531,15 +556,28 @@ function Footer({ t }: { t: Record<string, string | string[] | string[][]> }) {
         <p>© 2026 VİYAN. Premium trade and logistics solutions.</p>
       </div>
       <div className="footer-links">
+        <strong>{t.footerMenu as string}</strong>
         {routes.map((route, index) => (
           <Link key={route.key} href={route.href}>
             {(t.nav as string[])[index]}
           </Link>
         ))}
       </div>
+      <div className="footer-services">
+        <strong>{t.footerServices as string}</strong>
+        {(t.services as string[]).slice(0, 4).map((service) => (
+          <span key={service}>{service}</span>
+        ))}
+      </div>
       <div className="footer-contact">
+        <strong>{t.footerContact as string}</strong>
         <a href={`tel:+90${phone.replace(/\D/g, "").slice(1)}`}>{phone}</a>
         <a href={whatsappUrl}>WhatsApp</a>
+        <p>{t.address as string}</p>
+        <div className="footer-social">
+          <span>Instagram</span>
+          <span>LinkedIn</span>
+        </div>
       </div>
     </footer>
   );
