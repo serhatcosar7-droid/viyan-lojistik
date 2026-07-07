@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VİYAN | Tır, Lüks Araç ve Lojistikte Bölgesel Güven",
+  title: {
+    default: "VİYAN | Tır, Lüks Araç ve Lojistikte Bölgesel Güven",
+    template: "%s"
+  },
   description:
     "VİYAN; tır ve lüks araç alım-satımı, İran ve Irak transit ticareti, lojistik operasyon yönetimi ve sınır ötesi ticaret çözümleri sunar.",
   metadataBase: new URL("https://viyan.com"),

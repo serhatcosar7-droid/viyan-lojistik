@@ -8,7 +8,7 @@ export const locales: { code: Locale; label: string; short: string; dir: "ltr" |
 
 export const dictionary = {
   tr: {
-    nav: ["Hakkımızda", "Showroom", "Hizmetler", "Transit Ticaret", "Blog", "İletişim"],
+    nav: ["Ana Sayfa", "Hakkımızda", "Showroom", "Blog", "İletişim"],
     heroTitle: "Tır, Lüks Araç ve Lojistikte Bölgesel Güven",
     heroText:
       "VİYAN, 20 yıllık tecrübesiyle tır ve lüks araç alım-satımı, İran ve Irak’a transit ticaret, lojistik organizasyon ve sınır ötesi ticaret çözümleri sunar.",
@@ -55,16 +55,16 @@ export const dictionary = {
     ],
     blogTitle: "Blog ve piyasa notları",
     blog: [
-      ["Transit ticarette doğru araç seçimi", "İran ve Irak pazarına uygun tır ve lüks araç tedarikinde dikkat edilmesi gereken başlıklar."],
-      ["Sınır ötesi satışta operasyon disiplini", "Belge, rota, teslimat ve iletişim süreçlerinin tek merkezden yönetilmesi neden önemlidir?"],
-      ["Premium araç ticaretinde güven", "Araç geçmişi, ekspertiz, lojistik ve satış sonrası iletişim güveni nasıl güçlendirir?"]
+      ["Transit Ticarette İran ve Irak Pazarı", "İran ve Irak pazarında araç satışı, belge takibi ve lojistik planlamanın ticari başarıya etkisi."],
+      ["Tır Alım Satımında Dikkat Edilmesi Gerekenler", "Tır alım-satımında geçmiş kayıtları, kondisyon, rota uygunluğu ve operasyon maliyetleri nasıl değerlendirilir?"],
+      ["Lojistikte Güvenilir Partner Seçimi", "Sınır ötesi ticarette doğru lojistik partneri seçmek operasyon güvenini ve teslimat kalitesini artırır."]
     ],
     contactTitle: "İletişim",
     form: ["Ad Soyad", "Telefon", "E-posta", "İlgilendiğiniz Hizmet", "Mesaj", "Gönder"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Kat:4 No:8, 33000 Mezitli/Mersin"
   },
   en: {
-    nav: ["About", "Showroom", "Services", "Transit Trade", "Blog", "Contact"],
+    nav: ["Home", "About", "Showroom", "Blog", "Contact"],
     heroTitle: "Regional Trust in Trucks, Luxury Cars and Logistics",
     heroText:
       "VİYAN delivers truck and luxury vehicle trading, transit commerce to Iran and Iraq, logistics organization and cross-border trade solutions with 20 years of experience.",
@@ -104,16 +104,16 @@ export const dictionary = {
     why: ["20 years of sector experience", "Iran and Iraq market insight", "Reliable vehicle sourcing", "Professional logistics network", "Transparent communication", "Corporate service mindset"],
     blogTitle: "Blog and market notes",
     blog: [
-      ["Choosing the right vehicle for transit trade", "Key points in sourcing trucks and luxury vehicles for Iran and Iraq markets."],
-      ["Operational discipline in cross-border sales", "Why documents, routing, delivery and communication should be managed from one center."],
-      ["Trust in premium vehicle trade", "How vehicle history, inspection, logistics and after-sales contact strengthen confidence."]
+      ["Iran and Iraq Markets in Transit Trade", "How vehicle sales, document follow-up and logistics planning shape trade performance in Iran and Iraq."],
+      ["What to Check When Buying or Selling Trucks", "How to evaluate vehicle history, condition, route suitability and operating costs in truck trade."],
+      ["Choosing a Reliable Logistics Partner", "The right logistics partner improves operational trust, delivery quality and cross-border communication."]
     ],
     contactTitle: "Contact",
     form: ["Full Name", "Phone", "Email", "Service of Interest", "Message", "Send"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Floor:4 No:8, 33000 Mezitli/Mersin"
   },
   ar: {
-    nav: ["من نحن", "المعرض", "الخدمات", "تجارة الترانزيت", "المدونة", "تواصل"],
+    nav: ["الرئيسية", "من نحن", "المعرض", "المدونة", "تواصل"],
     heroTitle: "ثقة إقليمية في الشاحنات والسيارات الفاخرة والخدمات اللوجستية",
     heroText:
       "تقدم VİYAN بخبرة 20 عاما حلول بيع وشراء الشاحنات والسيارات الفاخرة، والتجارة الترانزيت إلى إيران والعراق، وتنظيم الخدمات اللوجستية والتجارة عبر الحدود.",

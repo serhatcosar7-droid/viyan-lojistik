@@ -6,17 +6,16 @@ import { useMemo, useState } from "react";
 import { dictionary, locales, type Locale } from "@/data/i18n";
 import { vehicles, type VehicleCategory } from "@/data/vehicles";
 
-type PageKey = "home" | "about" | "showroom" | "services" | "transit" | "blog" | "contact";
+type PageKey = "home" | "about" | "showroom" | "blog" | "contact";
 
 const whatsappUrl = "https://wa.me/905395603347";
 const phone = "0539 560 3347";
 const email = "info@viyan.com";
 
-const routes: { key: Exclude<PageKey, "home">; href: string }[] = [
+const routes: { key: PageKey; href: string }[] = [
+  { key: "home", href: "/" },
   { key: "about", href: "/hakkimizda" },
   { key: "showroom", href: "/showroom" },
-  { key: "services", href: "/hizmetler" },
-  { key: "transit", href: "/transit-ticaret" },
   { key: "blog", href: "/blog" },
   { key: "contact", href: "/iletisim" }
 ];
@@ -52,7 +51,12 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
 
       {page === "home" && <HomePage t={t} />}
       {page !== "home" && <InnerHero page={page} t={t} />}
-      {page === "about" && <AboutSection t={t} />}
+      {page === "about" && (
+        <>
+          <AboutSection t={t} />
+          <TransitSection t={t} />
+        </>
+      )}
       {page === "showroom" && (
         <ShowroomSection
           t={t}
@@ -70,13 +74,6 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
           vehicles={filteredVehicles}
         />
       )}
-      {page === "services" && (
-        <>
-          <ServicesSection t={t} />
-          <WhySection t={t} />
-        </>
-      )}
-      {page === "transit" && <TransitSection t={t} />}
       {page === "blog" && <BlogSection t={t} />}
       {page === "contact" && <ContactSection t={t} />}
 
@@ -164,6 +161,8 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
           <div className="hero-logo-watermark">VİYAN</div>
         </div>
       </section>
+      <ServicesSection t={t} />
+      <FeaturedVehicles t={t} />
       <WhySection t={t} />
       <HomeGateway t={t} />
     </>
@@ -174,8 +173,6 @@ function InnerHero({ page, t }: { page: Exclude<PageKey, "home">; t: Record<stri
   const content = {
     about: [t.aboutTitle, t.aboutText],
     showroom: [t.showroomTitle, t.showroomText],
-    services: [t.servicesTitle, t.heroText],
-    transit: [t.transitTitle, t.transitText],
     blog: [t.blogTitle, t.heroText],
     contact: [t.contactTitle, t.address]
   }[page] as [string, string];
@@ -193,7 +190,7 @@ function HomeGateway({ t }: { t: Record<string, string | string[] | string[][]> 
   const items = [
     { href: "/hakkimizda", title: t.aboutTitle as string, text: t.aboutText as string },
     { href: "/showroom", title: t.showroomTitle as string, text: t.showroomText as string },
-    { href: "/transit-ticaret", title: t.transitTitle as string, text: t.transitText as string }
+    { href: "/blog", title: t.blogTitle as string, text: (t.blog as string[][])[0][1] }
   ];
 
   return (
@@ -209,6 +206,44 @@ function HomeGateway({ t }: { t: Record<string, string | string[] | string[][]> 
             <p>{item.text}</p>
             <span>{t.details as string}</span>
           </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FeaturedVehicles({ t }: { t: Record<string, string | string[] | string[][]> }) {
+  return (
+    <section className="section featured-section">
+      <div className="section-heading">
+        <span className="section-kicker">SELECTED</span>
+        <h2>{t.showroomTitle as string}</h2>
+        <p>{t.showroomText as string}</p>
+      </div>
+      <div className="vehicle-grid featured-grid">
+        {vehicles.slice(0, 3).map((vehicle) => (
+          <article className="vehicle-card premium-card" key={vehicle.id}>
+            <div className="vehicle-image">
+              <Image src={vehicle.image} alt={`${vehicle.brand} ${vehicle.model}`} width={680} height={460} loading="lazy" />
+              <span>{vehicle.category === "truck" ? (t.trucks as string) : (t.luxury as string)}</span>
+            </div>
+            <div className="vehicle-body">
+              <div>
+                <h3>
+                  {vehicle.brand} {vehicle.model}
+                </h3>
+                <p>{vehicle.description}</p>
+              </div>
+              <div className="card-actions">
+                <Link href="/showroom" className="button compact dark">
+                  {t.details as string}
+                </Link>
+                <a href={`${whatsappUrl}?text=${encodeURIComponent(`${vehicle.brand} ${vehicle.model} hakkında bilgi almak istiyorum.`)}`} className="button compact cyan">
+                  {t.askWhatsApp as string}
+                </a>
+              </div>
+            </div>
+          </article>
         ))}
       </div>
     </section>
