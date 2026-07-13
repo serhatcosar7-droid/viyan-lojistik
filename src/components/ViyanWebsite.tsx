@@ -172,12 +172,60 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
           <div className="hero-logo-watermark">VİYAN</div>
         </div>
       </section>
+      <EditorialShowcase t={t} />
       <TransitSection t={t} compact />
       <ServicesSection t={t} />
       <FeaturedVehicles t={t} />
       <WhySection t={t} />
       <HomeGateway t={t} />
     </>
+  );
+}
+
+function EditorialShowcase({ t }: { t: Record<string, string | string[] | string[][]> }) {
+  const cards = [
+    {
+      image: "/vehicles/vehicle-1.jpg",
+      kicker: "TRANSIT TRADE",
+      title: t.transitTitle as string,
+      text: t.transitText as string,
+      href: "/hakkimizda"
+    },
+    {
+      image: "/vehicles/vehicle-3.jpg",
+      kicker: "SHOWROOM",
+      title: t.showroomTitle as string,
+      text: t.showroomText as string,
+      href: "/showroom"
+    },
+    {
+      image: "/vehicles/vehicle-5.jpg",
+      kicker: "LOGISTICS",
+      title: t.servicesTitle as string,
+      text: (t.services as string[]).slice(0, 3).join(" · "),
+      href: "/iletisim"
+    }
+  ];
+
+  return (
+    <section className="section editorial-section">
+      <div className="section-heading wide-heading">
+        <span className="section-kicker">VİYAN RANGE</span>
+        <h2>{t.heroTitle as string}</h2>
+      </div>
+      <div className="editorial-grid">
+        {cards.map((card) => (
+          <Link className="editorial-card" href={card.href} key={card.kicker}>
+            <Image src={card.image} alt={card.title} width={760} height={520} loading="lazy" />
+            <div className="editorial-content">
+              <span>{card.kicker}</span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -492,6 +540,8 @@ function WhySection({ t }: { t: Record<string, string | string[] | string[][]> }
 }
 
 function BlogSection({ t }: { t: Record<string, string | string[] | string[][]> }) {
+  const blogImages = ["/vehicles/vehicle-1.jpg", "/vehicles/vehicle-3.jpg", "/vehicles/vehicle-5.jpg", "/vehicles/vehicle-2.jpg"];
+
   return (
     <section className="section blog-section">
       <div className="section-heading">
@@ -499,10 +549,10 @@ function BlogSection({ t }: { t: Record<string, string | string[] | string[][]> 
         <h2>{t.blogTitle as string}</h2>
       </div>
       <div className="blog-grid">
-        {(t.blog as string[][]).map(([title, text]) => (
+        {(t.blog as string[][]).map(([title, text], index) => (
           <article className="blog-card" key={title}>
             <div className="blog-thumb">
-              <Image src="/vehicles/vehicle-3.jpg" alt={title} width={520} height={320} loading="lazy" />
+              <Image src={blogImages[index % blogImages.length]} alt={title} width={520} height={320} loading="lazy" />
             </div>
             <span>VİYAN INSIGHT</span>
             <h3>{title}</h3>
