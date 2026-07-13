@@ -238,7 +238,7 @@ function InnerHero({ page, t }: { page: Exclude<PageKey, "home">; t: Record<stri
   }[page] as [string, string];
 
   return (
-    <section className="inner-hero">
+    <section className={`inner-hero inner-hero-${page}`}>
       <span className="section-kicker">VİYAN</span>
       <h1>{content[0]}</h1>
       <p>{content[1]}</p>
