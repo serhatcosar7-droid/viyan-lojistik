@@ -106,14 +106,21 @@ function Header({
           <Image src="/logo.png" alt="VİYAN logo" width={172} height={48} priority />
         </span>
       </Link>
-      <nav className="nav-links" aria-label="Primary navigation">
+      <nav id="primary-navigation" className="nav-links" aria-label="Primary navigation">
         {routes.map((route, index) => (
           <Link key={route.key} className={page === route.key ? "active" : ""} href={route.href} onClick={() => setMenuOpen(false)}>
             {nav[index]}
           </Link>
         ))}
       </nav>
-      <button className="menu-toggle" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label="Toggle menu">
+      <button
+        className="menu-toggle"
+        type="button"
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-label="Menüyü aç/kapat"
+        aria-expanded={menuOpen}
+        aria-controls="primary-navigation"
+      >
         <span />
         <span />
         <span />
