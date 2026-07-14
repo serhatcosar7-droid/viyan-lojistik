@@ -183,7 +183,7 @@ function HomePage({ t, locale }: { t: Record<string, string | string[] | string[
         </div>
         <div className="hero-visual" aria-label="VİYAN showroom">
           <Image
-            src="/vehicles/daf-480-2021.jpg"
+            src="/vehicles/vehicle-1.jpg"
             alt="Premium truck showroom"
             width={980}
             height={760}
@@ -206,21 +206,21 @@ function HomePage({ t, locale }: { t: Record<string, string | string[] | string[
 function EditorialShowcase({ t }: { t: Record<string, string | string[] | string[][]> }) {
   const cards = [
     {
-      image: "/vehicles/daf-480-2021.jpg",
+      image: "/vehicles/vehicle-1.jpg",
       kicker: "TRANSIT TRADE",
       title: t.transitTitle as string,
       text: t.transitText as string,
       href: "/hakkimizda"
     },
     {
-      image: "/vehicles/renault-t480-2023.jpg",
+      image: "/vehicles/vehicle-3.jpg",
       kicker: "SHOWROOM",
       title: t.showroomTitle as string,
       text: t.showroomText as string,
       href: "/showroom"
     },
     {
-      image: "/vehicles/volvo-500-2018.jpg",
+      image: "/vehicles/vehicle-5.jpg",
       kicker: "LOGISTICS",
       title: t.servicesTitle as string,
       text: (t.services as string[]).slice(0, 3).join(" · "),
@@ -529,12 +529,7 @@ function WhySection({ t }: { t: Record<string, string | string[] | string[][]> }
 }
 
 function BlogSection({ t }: { t: Record<string, string | string[] | string[][]> }) {
-  const blogImages = [
-    "/vehicles/daf-480-2021.jpg",
-    "/vehicles/daf-530-2019.jpg",
-    "/vehicles/renault-t480-2023.jpg",
-    "/vehicles/volvo-500-2018.jpg"
-  ];
+  const blogImages = ["/vehicles/vehicle-1.jpg", "/vehicles/vehicle-3.jpg", "/vehicles/vehicle-5.jpg", "/vehicles/vehicle-2.jpg"];
 
   return (
     <section className="section blog-section">

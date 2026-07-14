@@ -542,14 +542,14 @@ p {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.54), rgba(4, 7, 13, 0.24)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.16), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/daf-480-2021.jpg") center / cover;
+    url("/vehicles/vehicle-1.jpg") center / cover;
 }
 
 .inner-hero-about::before {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.54), rgba(4, 7, 13, 0.24)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.16), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/renault-t480-2023.jpg") center / cover;
+    url("/vehicles/vehicle-3.jpg") center / cover;
 }
 
 .inner-hero-showroom::before {
@@ -564,7 +564,7 @@ p {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.58), rgba(4, 7, 13, 0.30)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.14), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/volvo-500-2018.jpg") center / cover;
+    url("/vehicles/vehicle-1.jpg") center / cover;
 }
 
 .inner-hero::after {
@@ -786,6 +786,14 @@ p {
   height: 100%;
   object-fit: cover;
   transition: transform 240ms ease;
+}
+
+.showroom-section .vehicle-image {
+  aspect-ratio: 3 / 4;
+}
+
+.showroom-section .vehicle-image img {
+  object-position: center bottom;
 }
 
 .vehicle-card:hover .vehicle-image img {
