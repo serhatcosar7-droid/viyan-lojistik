@@ -1,4 +1,7 @@
+import type { Locale } from "@/data/i18n";
+
 export type VehicleCategory = "truck" | "luxury";
+export type LocalizedVehicleText = Record<Locale, string>;
 
 export type Vehicle = {
   id: string;
@@ -7,83 +10,60 @@ export type Vehicle = {
   brand: string;
   model: string;
   year: number;
-  mileage: string;
-  fuel: string;
-  transmission: string;
-  market: "Türkiye" | "İran" | "Irak" | "Transit";
-  price: string;
-  description: string;
+  description: LocalizedVehicleText;
 };
 
 export const vehicles: Vehicle[] = [
   {
-    id: "mercedes-actros-1845",
+    id: "daf-480-2021",
     category: "truck",
-    image: "/vehicles/vehicle-1.jpg",
-    brand: "Mercedes-Benz",
-    model: "Actros 1845",
+    image: "/vehicles/daf-480-2021.jpg",
+    brand: "DAF",
+    model: "480",
     year: 2021,
-    mileage: "420.000 km",
-    fuel: "Dizel",
-    transmission: "Otomatik",
-    market: "Irak",
-    price: "Talep üzerine",
-    description: "Uzun yol ve transit operasyonlar için bakımlı, güçlü çekici."
+    description: {
+      tr: "DAF 480, 2021 model çekici.",
+      en: "DAF 480, model year 2021 truck.",
+      ar: "شاحنة DAF 480، موديل 2021."
+    }
   },
   {
-    id: "scania-r450",
+    id: "daf-530-2019",
     category: "truck",
-    image: "/vehicles/vehicle-2.jpg",
-    brand: "Scania",
-    model: "R450",
-    year: 2020,
-    mileage: "510.000 km",
-    fuel: "Dizel",
-    transmission: "Otomatik",
-    market: "İran",
-    price: "Talep üzerine",
-    description: "Sınır ötesi ticaret ve filo yenileme için uygun premium tır."
+    image: "/vehicles/daf-530-2019.jpg",
+    brand: "DAF",
+    model: "530",
+    year: 2019,
+    description: {
+      tr: "DAF 530, 2019 model çekici.",
+      en: "DAF 530, model year 2019 truck.",
+      ar: "شاحنة DAF 530، موديل 2019."
+    }
   },
   {
-    id: "volvo-fh500",
+    id: "renault-t480-2023",
     category: "truck",
-    image: "/vehicles/vehicle-3.jpg",
+    image: "/vehicles/renault-t480-2023.jpg",
+    brand: "Renault",
+    model: "T480",
+    year: 2023,
+    description: {
+      tr: "Renault T480, 2023 model çekici.",
+      en: "Renault T480, model year 2023 truck.",
+      ar: "شاحنة Renault T480، موديل 2023."
+    }
+  },
+  {
+    id: "volvo-500-2018",
+    category: "truck",
+    image: "/vehicles/volvo-500-2018.jpg",
     brand: "Volvo",
-    model: "FH500",
-    year: 2022,
-    mileage: "290.000 km",
-    fuel: "Dizel",
-    transmission: "Otomatik",
-    market: "Transit",
-    price: "Talep üzerine",
-    description: "Yüksek konforlu kabin, güçlü motor ve uluslararası rota uyumu."
-  },
-  {
-    id: "range-rover-vogue",
-    category: "luxury",
-    image: "/vehicles/vehicle-4.jpg",
-    brand: "Range Rover",
-    model: "Vogue",
-    year: 2021,
-    mileage: "68.000 km",
-    fuel: "Dizel",
-    transmission: "Otomatik",
-    market: "Türkiye",
-    price: "Talep üzerine",
-    description: "Temiz geçmişli, lüks segmentte güçlü ve prestijli SUV."
-  },
-  {
-    id: "mercedes-s-class",
-    category: "luxury",
-    image: "/vehicles/vehicle-5.jpg",
-    brand: "Mercedes-Benz",
-    model: "S-Class",
-    year: 2022,
-    mileage: "41.000 km",
-    fuel: "Benzin",
-    transmission: "Otomatik",
-    market: "Irak",
-    price: "Talep üzerine",
-    description: "Üst segment müşteri talepleri için seçilmiş temsil aracı."
+    model: "500",
+    year: 2018,
+    description: {
+      tr: "Volvo 500, 2018 model çekici.",
+      en: "Volvo 500, model year 2018 truck.",
+      ar: "شاحنة Volvo 500، موديل 2018."
+    }
   }
 ];

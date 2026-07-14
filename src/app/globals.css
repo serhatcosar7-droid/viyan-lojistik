@@ -542,21 +542,21 @@ p {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.54), rgba(4, 7, 13, 0.24)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.16), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/vehicle-1.jpg") center / cover;
+    url("/vehicles/daf-480-2021.jpg") center / cover;
 }
 
 .inner-hero-about::before {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.54), rgba(4, 7, 13, 0.24)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.16), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/vehicle-3.jpg") center / cover;
+    url("/vehicles/renault-t480-2023.jpg") center / cover;
 }
 
 .inner-hero-showroom::before {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.52), rgba(4, 7, 13, 0.20)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.12), rgba(4, 7, 13, 0.86)),
-    url("/vehicles/vehicle-5.jpg") center / cover;
+    url("/vehicles/daf-530-2019.jpg") center / cover;
 }
 
 .inner-hero-blog::before,
@@ -564,7 +564,7 @@ p {
   background:
     linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(4, 7, 13, 0.58), rgba(4, 7, 13, 0.30)),
     linear-gradient(180deg, rgba(4, 7, 13, 0.14), rgba(4, 7, 13, 0.88)),
-    url("/vehicles/vehicle-1.jpg") center / cover;
+    url("/vehicles/volvo-500-2018.jpg") center / cover;
 }
 
 .inner-hero::after {
@@ -701,7 +701,7 @@ p {
 
 .filters {
   display: grid;
-  grid-template-columns: auto repeat(3, minmax(150px, 1fr));
+  grid-template-columns: auto repeat(2, minmax(150px, 1fr));
   gap: 12px;
   align-items: end;
   margin-bottom: 28px;
@@ -1217,7 +1217,8 @@ dd {
   flex-wrap: wrap;
 }
 
-.footer-social span {
+.footer-social a {
+  display: inline-flex;
   padding: 6px 9px;
   border: 1px solid var(--line);
   border-radius: 999px;

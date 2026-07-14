@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { dictionary, locales, type Locale } from "@/data/i18n";
 import { vehicles, type VehicleCategory } from "@/data/vehicles";
 
 type PageKey = "home" | "about" | "showroom" | "blog" | "contact";
 
 const whatsappUrl = "https://wa.me/905395603347";
+const instagramUrl = "https://www.instagram.com/viyangroup/";
 const phone = "0539 560 3347";
 const email = "info@viyan.com";
 
@@ -25,31 +26,46 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
   const [category, setCategory] = useState<"all" | VehicleCategory>("all");
   const [brand, setBrand] = useState("all");
   const [year, setYear] = useState("all");
-  const [market, setMarket] = useState("all");
 
   const language = locales.find((item) => item.code === locale) ?? locales[0];
   const t = dictionary[locale];
 
   const brands = Array.from(new Set(vehicles.map((vehicle) => vehicle.brand))).sort();
   const years = Array.from(new Set(vehicles.map((vehicle) => String(vehicle.year)))).sort().reverse();
-  const markets = Array.from(new Set(vehicles.map((vehicle) => vehicle.market))).sort();
+
+  useEffect(() => {
+    const savedLocale = window.localStorage.getItem("viyan-locale");
+    if (savedLocale === "tr" || savedLocale === "en" || savedLocale === "ar") {
+      setLocale(savedLocale);
+      const savedLanguage = locales.find((item) => item.code === savedLocale) ?? locales[0];
+      document.documentElement.lang = savedLocale;
+      document.documentElement.dir = savedLanguage.dir;
+    }
+  }, []);
+
+  const changeLocale = (nextLocale: Locale) => {
+    setLocale(nextLocale);
+    window.localStorage.setItem("viyan-locale", nextLocale);
+    const nextLanguage = locales.find((item) => item.code === nextLocale) ?? locales[0];
+    document.documentElement.lang = nextLocale;
+    document.documentElement.dir = nextLanguage.dir;
+  };
 
   const filteredVehicles = useMemo(() => {
     return vehicles.filter((vehicle) => {
       return (
         (category === "all" || vehicle.category === category) &&
         (brand === "all" || vehicle.brand === brand) &&
-        (year === "all" || String(vehicle.year) === year) &&
-        (market === "all" || vehicle.market === market)
+        (year === "all" || String(vehicle.year) === year)
       );
     });
-  }, [brand, category, market, year]);
+  }, [brand, category, year]);
 
   return (
     <main dir={language.dir} className={`site-shell ${language.dir === "rtl" ? "rtl" : ""}`}>
-      <Header page={page} locale={locale} setLocale={setLocale} nav={t.nav as string[]} />
+      <Header page={page} locale={locale} setLocale={changeLocale} nav={t.nav as string[]} />
 
-      {page === "home" && <HomePage t={t} />}
+      {page === "home" && <HomePage t={t} locale={locale} />}
       {page !== "home" && <InnerHero page={page} t={t} />}
       {page === "about" && (
         <>
@@ -63,15 +79,13 @@ export function ViyanWebsite({ page = "home" }: { page?: PageKey }) {
           t={t}
           brands={brands}
           years={years}
-          markets={markets}
+          locale={locale}
           category={category}
           brand={brand}
           year={year}
-          market={market}
           setCategory={setCategory}
           setBrand={setBrand}
           setYear={setYear}
-          setMarket={setMarket}
           vehicles={filteredVehicles}
         />
       )}
@@ -142,13 +156,13 @@ function Header({
   );
 }
 
-function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) {
+function HomePage({ t, locale }: { t: Record<string, string | string[] | string[][]>; locale: Locale }) {
   return (
     <>
       <section className="hero-section">
         <div className="hero-content reveal">
           <div className="eyebrow">VİYAN GLOBAL TRADE & LOGISTICS</div>
-          <div className="mobile-hero-title">Tır, Lüks Araç ve Transit Ticarette Güven</div>
+          <div className="mobile-hero-title">{t.mobileHeroTitle as string}</div>
           <h1>{t.heroTitle as string}</h1>
           <p>{t.heroText as string}</p>
           <div className="hero-actions">
@@ -169,7 +183,7 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
         </div>
         <div className="hero-visual" aria-label="VİYAN showroom">
           <Image
-            src="/vehicles/vehicle-1.jpg"
+            src="/vehicles/daf-480-2021.jpg"
             alt="Premium truck showroom"
             width={980}
             height={760}
@@ -182,7 +196,7 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
       <EditorialShowcase t={t} />
       <TransitSection t={t} compact />
       <ServicesSection t={t} />
-      <FeaturedVehicles t={t} />
+      <FeaturedVehicles t={t} locale={locale} />
       <WhySection t={t} />
       <HomeGateway t={t} />
     </>
@@ -192,21 +206,21 @@ function HomePage({ t }: { t: Record<string, string | string[] | string[][]> }) 
 function EditorialShowcase({ t }: { t: Record<string, string | string[] | string[][]> }) {
   const cards = [
     {
-      image: "/vehicles/vehicle-1.jpg",
+      image: "/vehicles/daf-480-2021.jpg",
       kicker: "TRANSIT TRADE",
       title: t.transitTitle as string,
       text: t.transitText as string,
       href: "/hakkimizda"
     },
     {
-      image: "/vehicles/vehicle-3.jpg",
+      image: "/vehicles/renault-t480-2023.jpg",
       kicker: "SHOWROOM",
       title: t.showroomTitle as string,
       text: t.showroomText as string,
       href: "/showroom"
     },
     {
-      image: "/vehicles/vehicle-5.jpg",
+      image: "/vehicles/volvo-500-2018.jpg",
       kicker: "LOGISTICS",
       title: t.servicesTitle as string,
       text: (t.services as string[]).slice(0, 3).join(" · "),
@@ -279,7 +293,7 @@ function HomeGateway({ t }: { t: Record<string, string | string[] | string[][]> 
   );
 }
 
-function FeaturedVehicles({ t }: { t: Record<string, string | string[] | string[][]> }) {
+function FeaturedVehicles({ t, locale }: { t: Record<string, string | string[] | string[][]>; locale: Locale }) {
   return (
     <section className="section featured-section">
       <div className="section-heading">
@@ -299,23 +313,19 @@ function FeaturedVehicles({ t }: { t: Record<string, string | string[] | string[
                 <h3>
                   {vehicle.brand} {vehicle.model}
                 </h3>
-                <p>{vehicle.description}</p>
+                <p>{vehicle.description[locale]}</p>
               </div>
               <dl>
                 <div>
                   <dt>{t.year as string}</dt>
                   <dd>{vehicle.year}</dd>
                 </div>
-                <div>
-                  <dt>KM</dt>
-                  <dd>{vehicle.mileage}</dd>
-                </div>
               </dl>
               <div className="card-actions">
                 <Link href="/showroom" className="button compact dark">
                   {t.details as string}
                 </Link>
-                <a href={`${whatsappUrl}?text=${encodeURIComponent(`${vehicle.brand} ${vehicle.model} hakkında bilgi almak istiyorum.`)}`} className="button compact cyan">
+                <a href={`${whatsappUrl}?text=${encodeURIComponent(`${vehicle.brand} ${vehicle.model}: ${t.vehicleInquiry as string}`)}`} className="button compact cyan">
                   {t.askWhatsApp as string}
                 </a>
               </div>
@@ -378,31 +388,27 @@ function AboutServicesSection({ t }: { t: Record<string, string | string[] | str
 
 function ShowroomSection({
   t,
+  locale,
   brands,
   years,
-  markets,
   category,
   brand,
   year,
-  market,
   setCategory,
   setBrand,
   setYear,
-  setMarket,
   vehicles: filteredVehicles
 }: {
   t: Record<string, string | string[] | string[][]>;
+  locale: Locale;
   brands: string[];
   years: string[];
-  markets: string[];
   category: "all" | VehicleCategory;
   brand: string;
   year: string;
-  market: string;
   setCategory: (category: "all" | VehicleCategory) => void;
   setBrand: (brand: string) => void;
   setYear: (year: string) => void;
-  setMarket: (market: string) => void;
   vehicles: typeof vehicles;
 }) {
   return (
@@ -420,13 +426,9 @@ function ShowroomSection({
           <button type="button" className={category === "truck" ? "active" : ""} onClick={() => setCategory("truck")}>
             {t.trucks as string}
           </button>
-          <button type="button" className={category === "luxury" ? "active" : ""} onClick={() => setCategory("luxury")}>
-            {t.luxury as string}
-          </button>
         </div>
         <FilterSelect label={t.brand as string} value={brand} onChange={setBrand} options={brands} allLabel={t.all as string} />
         <FilterSelect label={t.year as string} value={year} onChange={setYear} options={years} allLabel={t.all as string} />
-        <FilterSelect label={t.market as string} value={market} onChange={setMarket} options={markets} allLabel={t.all as string} />
       </div>
       <div className="vehicle-grid">
         {filteredVehicles.map((vehicle) => (
@@ -440,32 +442,12 @@ function ShowroomSection({
                 <h3>
                   {vehicle.brand} {vehicle.model}
                 </h3>
-                <p>{vehicle.description}</p>
+                <p>{vehicle.description[locale]}</p>
               </div>
               <dl>
                 <div>
                   <dt>{t.year as string}</dt>
                   <dd>{vehicle.year}</dd>
-                </div>
-                <div>
-                  <dt>KM</dt>
-                  <dd>{vehicle.mileage}</dd>
-                </div>
-                <div>
-                  <dt>Yakıt</dt>
-                  <dd>{vehicle.fuel}</dd>
-                </div>
-                <div>
-                  <dt>Vites</dt>
-                  <dd>{vehicle.transmission}</dd>
-                </div>
-                <div>
-                  <dt>{t.market as string}</dt>
-                  <dd>{vehicle.market}</dd>
-                </div>
-                <div>
-                  <dt>{t.price as string}</dt>
-                  <dd>{vehicle.price}</dd>
                 </div>
               </dl>
               <div className="card-actions">
@@ -473,7 +455,7 @@ function ShowroomSection({
                   {t.details as string}
                 </Link>
                 <a
-                  href={`${whatsappUrl}?text=${encodeURIComponent(`${vehicle.brand} ${vehicle.model} hakkında bilgi almak istiyorum.`)}`}
+                  href={`${whatsappUrl}?text=${encodeURIComponent(`${vehicle.brand} ${vehicle.model}: ${t.vehicleInquiry as string}`)}`}
                   className="button compact cyan"
                 >
                   {t.askWhatsApp as string}
@@ -547,7 +529,12 @@ function WhySection({ t }: { t: Record<string, string | string[] | string[][]> }
 }
 
 function BlogSection({ t }: { t: Record<string, string | string[] | string[][]> }) {
-  const blogImages = ["/vehicles/vehicle-1.jpg", "/vehicles/vehicle-3.jpg", "/vehicles/vehicle-5.jpg", "/vehicles/vehicle-2.jpg"];
+  const blogImages = [
+    "/vehicles/daf-480-2021.jpg",
+    "/vehicles/daf-530-2019.jpg",
+    "/vehicles/renault-t480-2023.jpg",
+    "/vehicles/volvo-500-2018.jpg"
+  ];
 
   return (
     <section className="section blog-section">
@@ -610,7 +597,7 @@ function Footer({ t }: { t: Record<string, string | string[] | string[][]> }) {
     <footer className="site-footer">
       <div className="footer-brand">
         <Image src="/logo.png" alt="VİYAN" width={132} height={38} loading="lazy" />
-        <p>© 2026 VİYAN. Premium trade and logistics solutions.</p>
+        <p>{t.footerCopyright as string}</p>
       </div>
       <div className="footer-links">
         <strong>{t.footerMenu as string}</strong>
@@ -632,8 +619,9 @@ function Footer({ t }: { t: Record<string, string | string[] | string[][]> }) {
         <a href={whatsappUrl}>WhatsApp</a>
         <p>{t.address as string}</p>
         <div className="footer-social">
-          <span>Instagram</span>
-          <span>LinkedIn</span>
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="VİYAN Instagram">
+            Instagram
+          </a>
         </div>
       </div>
     </footer>

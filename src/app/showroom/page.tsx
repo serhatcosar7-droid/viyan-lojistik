@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Araç Showroom | VİYAN",
     description: "Tır ve lüks araçlar için premium showroom deneyimi.",
-    images: ["/vehicles/vehicle-1.jpg"]
+    images: ["/vehicles/daf-480-2021.jpg"]
   }
 };
 

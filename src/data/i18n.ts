@@ -10,6 +10,7 @@ export const dictionary = {
   tr: {
     nav: ["Ana Sayfa", "Hakkımızda", "Showroom", "Blog", "İletişim"],
     heroTitle: "Tır, Lüks Araç ve Lojistikte Bölgesel Güven",
+    mobileHeroTitle: "Tır, Lüks Araç ve Transit Ticarette Güven",
     heroText:
       "VİYAN, 20 yıllık tecrübesiyle tır ve lüks araç alım-satımı, İran ve Irak’a transit ticaret, lojistik organizasyon ve sınır ötesi ticaret çözümleri sunar.",
     inspect: "Araçları İncele",
@@ -30,6 +31,7 @@ export const dictionary = {
     market: "Ülke / pazar",
     details: "Detayları Gör",
     askWhatsApp: "WhatsApp ile Sor",
+    vehicleInquiry: "hakkında bilgi almak istiyorum.",
     servicesTitle: "Kapsamlı lojistik ve ticaret hizmetleri",
     services: [
       "Tır alım-satımı",
@@ -64,12 +66,14 @@ export const dictionary = {
     footerMenu: "Menü",
     footerServices: "Hizmetler",
     footerContact: "İletişim",
+    footerCopyright: "© 2026 VİYAN. Premium ticaret ve lojistik çözümleri.",
     form: ["Ad Soyad", "Telefon", "E-posta", "İlgilendiğiniz Hizmet", "Mesaj", "Gönder"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Kat:4 No:8, 33000 Mezitli/Mersin"
   },
   en: {
     nav: ["Home", "About", "Showroom", "Blog", "Contact"],
     heroTitle: "Regional Trust in Trucks, Luxury Cars and Logistics",
+    mobileHeroTitle: "Trust in Trucks, Luxury Cars and Transit Trade",
     heroText:
       "VİYAN delivers truck and luxury vehicle trading, transit commerce to Iran and Iraq, logistics organization and cross-border trade solutions with 20 years of experience.",
     inspect: "View Vehicles",
@@ -90,6 +94,7 @@ export const dictionary = {
     market: "Country / market",
     details: "View Details",
     askWhatsApp: "Ask on WhatsApp",
+    vehicleInquiry: "I would like to get more information.",
     servicesTitle: "Complete logistics and trade services",
     services: [
       "Truck trading",
@@ -117,12 +122,14 @@ export const dictionary = {
     footerMenu: "Menu",
     footerServices: "Services",
     footerContact: "Contact",
+    footerCopyright: "© 2026 VİYAN. Premium trade and logistics solutions.",
     form: ["Full Name", "Phone", "Email", "Service of Interest", "Message", "Send"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Floor:4 No:8, 33000 Mezitli/Mersin"
   },
   ar: {
     nav: ["الرئيسية", "من نحن", "المعرض", "المدونة", "تواصل"],
     heroTitle: "ثقة إقليمية في الشاحنات والسيارات الفاخرة والخدمات اللوجستية",
+    mobileHeroTitle: "الثقة في الشاحنات والسيارات الفاخرة وتجارة الترانزيت",
     heroText:
       "تقدم VİYAN بخبرة 20 عاما حلول بيع وشراء الشاحنات والسيارات الفاخرة، والتجارة الترانزيت إلى إيران والعراق، وتنظيم الخدمات اللوجستية والتجارة عبر الحدود.",
     inspect: "استعرض المركبات",
@@ -143,6 +150,7 @@ export const dictionary = {
     market: "الدولة / السوق",
     details: "عرض التفاصيل",
     askWhatsApp: "اسأل عبر واتساب",
+    vehicleInquiry: "أرغب في الحصول على مزيد من المعلومات.",
     servicesTitle: "خدمات تجارية ولوجستية متكاملة",
     services: ["بيع وشراء الشاحنات", "بيع وشراء السيارات الفاخرة", "تجارة الترانزيت إلى إيران والعراق", "إدارة العمليات اللوجستية", "تنظيم النقل", "دعم إجراءات الاستيراد والتصدير", "استشارات توريد وبيع المركبات", "حلول التجارة الإقليمية"],
     transitTitle: "خبرة تجارة الترانزيت في إيران والعراق",
@@ -161,6 +169,7 @@ export const dictionary = {
     footerMenu: "القائمة",
     footerServices: "الخدمات",
     footerContact: "تواصل",
+    footerCopyright: "© 2026 VİYAN. حلول متميزة للتجارة والخدمات اللوجستية.",
     form: ["الاسم الكامل", "الهاتف", "البريد الإلكتروني", "الخدمة المطلوبة", "الرسالة", "إرسال"],
     address: "Yüzbaşıoğlu Apt, Merkez, 52003. Sk. No:1 Kat:4 No:8, 33000 Mezitli/Mersin"
   }
